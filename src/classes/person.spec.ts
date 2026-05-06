@@ -1,0 +1,17 @@
+import { describe, expect, test } from "vitest";
+import { Person } from "./person.js";
+import { GENDER } from "../constants/person.constant.js";
+
+describe("Person", () => {
+  test("Has expected fields", () => {
+    expect(new Person().ssn).toBeTruthy();
+    expect(new Person().birthday).toBeTruthy();
+    expect(new Person("195007312589").birthday).toBe("1950-07-31");
+    expect(new Person().gender).toBeTruthy();
+    expect(new Person("195007312589").gender).toBe(GENDER.FEMALE);
+    expect(new Person().firstName).toBeTruthy();
+    expect(new Person().lastName).toBeTruthy();
+    expect(new Person().fullName).toBeTruthy();
+    expect(new Person().age).toBeTruthy();
+  });
+});
