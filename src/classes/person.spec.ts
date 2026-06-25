@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Person } from "./person.js";
 import { GENDER } from "../constants/person.constant.js";
+import { MUNICIPALITY } from "../constants/municipalitys.constant.js";
 
 describe("Person", () => {
   test("Has expected fields", () => {
@@ -13,6 +14,10 @@ describe("Person", () => {
     expect(new Person().lastName).toBeTruthy();
     expect(new Person().fullName).toBeTruthy();
     expect(new Person().age).toBeTruthy();
+    expect(new Person().address).toBeTruthy();
+    expect(new Person().municipality).toBeOneOf([...MUNICIPALITY]);
+    expect(new Person().street).toBeTruthy();
+    expect(new Person().zip).toBeTruthy();
   });
 
   test("getAge", () => {
@@ -31,7 +36,6 @@ describe("Person", () => {
       const nextMonth = new Date(today);
       nextMonth.setMonth(today.getMonth() + 1);
       nextMonth.setFullYear(today.getFullYear() - 1);
-      console.log(nextMonth.toLocaleDateString("sv-SE"));
       expect(Person.getAge(nextMonth.toLocaleDateString("sv-SE"))).toBe(0);
     }
   });

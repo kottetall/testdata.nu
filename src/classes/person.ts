@@ -1,6 +1,8 @@
+import { getAdress } from "../generators/getAddress.js";
 import { getName } from "../generators/getName.js";
 import { Gender } from "../types/person.model.js";
 import { Ssn } from "./ssn.js";
+import { Address } from "../types/address.model.js";
 
 export class Person {
   ssn: string;
@@ -10,6 +12,7 @@ export class Person {
   lastName: string;
   fullName: string;
   age: number;
+  address: Address;
 
   constructor(baseSsn?: string) {
     const ssnUtil = new Ssn(baseSsn);
@@ -20,6 +23,19 @@ export class Person {
     this.lastName = getName({ type: "last" });
     this.fullName = `${this.firstName} ${this.lastName}`;
     this.age = Person.getAge(this.birthday);
+    this.address = getAdress();
+  }
+
+  get municipality() {
+    return this.address.municipality;
+  }
+
+  get street() {
+    return this.address.street;
+  }
+
+  get zip() {
+    return this.address.zip;
   }
 
   static getAge(birthday: string): number {

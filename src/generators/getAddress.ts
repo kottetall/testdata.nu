@@ -6,8 +6,9 @@ import {
 import { MUNICIPALITY } from "../constants/municipalitys.constant.js";
 import { STREETADDRESSES } from "../constants/addresses.constant.js";
 import { ALPHABET } from "../constants/alphabet.constant.js";
+import { Address } from "../types/address.model.js";
 
-export function getAdress() {
+export function getAdress(): Address {
   return {
     street: getStreet(),
     zip: getZip(),
