@@ -14,7 +14,7 @@ describe("getAddress", () => {
   describe("getStreet", () => {
     test("Valid outputs", () => {
       expect(getStreet()).toBeTruthy();
-      expect(getStreet()).toMatch(/^[A-zåäö\s]+\d{1,3}[A-zåäö]?$/gi);
+      expect(getStreet()).toMatch(/^[A-zåäöé\s]+\d{1,3}[A-zåäöé]?$/gi);
     });
   });
 
