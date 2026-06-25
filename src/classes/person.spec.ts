@@ -18,6 +18,7 @@ describe("Person", () => {
     expect(new Person().municipality).toBeOneOf([...MUNICIPALITY]);
     expect(new Person().street).toBeTruthy();
     expect(new Person().zip).toBeTruthy();
+    expect(new Person().email).toBeTruthy();
   });
 
   test("getAge", () => {
@@ -28,7 +29,6 @@ describe("Person", () => {
       const lastMonth = new Date(today);
       lastMonth.setMonth(today.getMonth() - 1);
       lastMonth.setFullYear(today.getFullYear() - 1);
-      console.log(lastMonth.toLocaleDateString("sv-SE"));
       expect(Person.getAge(lastMonth.toLocaleDateString("sv-SE"))).toBe(1);
     }
 

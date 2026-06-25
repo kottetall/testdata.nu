@@ -3,6 +3,8 @@ import { getName } from "../generators/getName.js";
 import { Gender } from "../types/person.model.js";
 import { Ssn } from "./ssn.js";
 import { Address } from "../types/address.model.js";
+import { randomFromArray } from "@kottetall/random";
+import { internationalizeSwedishText } from "../utils/internationalizeSwedishText.js";
 
 export class Person {
   ssn: string;
@@ -36,6 +38,12 @@ export class Person {
 
   get zip() {
     return this.address.zip;
+  }
+
+  get email() {
+    const fakeEmail = `${this.firstName}${randomFromArray([".", "-", "_"])}${this.lastName}@notreal.testdata.nu`;
+
+    return internationalizeSwedishText(fakeEmail).toLowerCase();
   }
 
   static getAge(birthday: string): number {
